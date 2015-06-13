@@ -1,0 +1,27 @@
+# depslib dependency file v1.0
+1434073886 source:/home/tate/code_blocks/chaining/main.cpp
+	<cstdlib>
+	<iostream>
+	"Chaining.hpp"
+
+1434073897 /home/tate/code_blocks/chaining/Chaining.hpp
+	"string"
+	"map"
+	"Alignment.hpp"
+	<vector>
+
+1434018628 /home/tate/code_blocks/chaining/Alignment.hpp
+
+1434021358 source:/home/tate/code_blocks/chaining/Alignment.cpp
+	"Alignment.hpp"
+
+1434106343 source:/home/tate/code_blocks/chaining/Chaining.cpp
+	"Chaining.hpp"
+	"iostream"
+	<fstream>
+	"cstdlib"
+	"string.h"
+	<map>
+	<set>
+	<vector>
+
