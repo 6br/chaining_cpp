@@ -21,11 +21,11 @@ public:
     void setSX(int sx);
     void setEX(int ex);
 private:
-    int sx;
-    int sy;
-    int ex;
-    int ey;
-    int score;
+    int SX;
+    int SY;
+    int EX;
+    int EY;
+    int Score;
 };
 
 #endif	/* ALIGNMENT_HPP */
