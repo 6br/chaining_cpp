@@ -13,6 +13,7 @@
 #include <map>
 #include <set>
 #include <vector>
+#include <climits>
 
 using namespace std;
 
@@ -54,9 +55,8 @@ Chaining::~Chaining() {
 void Chaining::generate() {
     for(auto itX = X.begin(); itX != X.end(); ++itX){
         if ((*itX).first==((*itX).second)[0]){  //if X is start point
-
             pair<int,vector<int>> newX;
-            int pointer = 100000;
+            int pointer = INT_MAX;
             for(auto itY = Y.begin();itY != Y.end(); ++itY){
                 if (((*itX).second)[0] > ((*itY).second)[0] && ((*itX).second)[1] > ((*itY).second)[1]){
                         //rewrite joukeinbun
@@ -66,7 +66,7 @@ void Chaining::generate() {
                     }
                 }
             }
-                if(pointer != 100000){
+                if(pointer != INT_MAX){
                     ((*itX).second[0]) = newX.second[0];
                     ((*itX).second[2]) = newX.second[2];
                     ((*itX).second[4]) += newX.second[4];
@@ -83,7 +83,7 @@ void Chaining::generate() {
             for(auto itY = Y.begin();itY != Y.end(); ++itY){
                 if (((*itX).second)[3]<=((*itY).second)[3] && ((*itX).second)[4]>((*itY).second)[4]){
                     //To do <eliminate>
-
+										((*itX).first)=INT_MAX;
                 }
             }
         }

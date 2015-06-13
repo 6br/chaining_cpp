@@ -4,7 +4,8 @@
  *
  * Created on 2015/06/11, 18:33
  */
- #include <string>
+
+#include <string>
 #include <map>
 #include "Alignment.hpp"
 #include <vector>

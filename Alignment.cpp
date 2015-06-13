@@ -21,6 +21,24 @@ Alignment::Alignment(const Alignment& orig) {
 Alignment::~Alignment() {
 }
 
+int &Alignment::operator[](int i){    // [] 演算子の多重定義
+	switch(i){
+	case 0:
+		return SX;
+	case 1:
+		return SY;
+	case 2:
+		return EX;
+	case 3:
+		return EY;
+	case 4:
+		return Score;
+	default :
+		cerr << "配列の範囲から外れています！";
+		return NULL;
+	}
+} 
+
 int Alignment::getEX(){
 	return EX;
 }
