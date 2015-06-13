@@ -92,6 +92,6 @@ void Chaining::generate() {
 
 void Chaining::result(){
     for(auto itY = Y.begin();itY != Y.end(); ++itY){
-        cout<<((*itY).second)[0]<< " " <<((*itY).second)[1]<< " "<<((*itY).second)[4]<<endl;
+			if((*itY).first!=INT_MAX)cout<<((*itY).second)[0]<< " " <<((*itY).second)[1]<< " "<<((*itY).second)[4]<<endl;
     }
 }
