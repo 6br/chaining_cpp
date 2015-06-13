@@ -8,7 +8,11 @@
 #include "Alignment.hpp"
 
 Alignment::Alignment(int sx, int sy, int ex, int ey, int score) {
-
+    sx = sx;
+    sy = sy;
+    ex = sx;
+    ey = ey;
+    score = score;
 }
 
 Alignment::Alignment(const Alignment& orig) {

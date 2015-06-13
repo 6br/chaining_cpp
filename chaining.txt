@@ -2,6 +2,7 @@
 3	9	23	32	11	b
 7	10	18	24	5	c
 14	21	10	19	11	d
-21	26	0	7	11	e
-	
+
+#21	26	0	7	11	e
+
 # sx, ex, sy, ey, score by tab sparced

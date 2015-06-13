@@ -41,8 +41,8 @@ Chaining::Chaining(char* filename) {
         //memcpy(temp2,temp,sizeof (int)*5);
         ///cout << (vect[0])[1] << endl;
         //tmp.insert(temp);
-        X.insert(pair<int,vector<int>>(temp[0],tep));
-        X.insert(pair<int,vector<int>>(temp[1],tep));
+        X.insert(std::make_pair(temp[0],tep));
+        X.insert(std::make_pair(temp[1],tep));
     }
 }
 
@@ -55,11 +55,11 @@ Chaining::~Chaining() {
 void Chaining::generate() {
     for(auto itX = X.begin(); itX != X.end(); ++itX){
         if ((*itX).first==((*itX).second)[0]){  //if X is start point
-            cout << ((*itX).second)[0] << endl;
+
             pair<int,vector<int>> newX;
-            int pointer=100000;
+            int pointer = 100000;
             for(auto itY = Y.begin();itY != Y.end(); ++itY){
-                if (((*itX).second)[0] < ((*itY).second)[0] && ((*itX).second)[1] < ((*itY).second)[1]){
+                if (((*itX).second)[0] > ((*itY).second)[0] && ((*itX).second)[1] > ((*itY).second)[1]){
                         //rewrite joukeinbun
                     if(((*itX).second[3]-(*itY).second[4]) < pointer){
                         pointer = ((*itX).second[3]-(*itY).second[4]);
@@ -67,22 +67,24 @@ void Chaining::generate() {
                     }
                 }
             }
+                if(pointer != 100000){
                     ((*itX).second[0]) = newX.second[0];
-                    ((*itX).second[1]) = newX.second[1];
+                    ((*itX).second[2]) = newX.second[2];
                     ((*itX).second[4]) += newX.second[4];
-
-
+                }
+            cout << ((*itX).second)[0] << " " << ((*itX).second)[2] << " " <<((*itX).second)[4] << endl;
         }else{      //if X is end point
-            cout << ((*itX).second)[1] << endl;
+            cout << ((*itX).second)[1] << "end" << endl;
             bool valid=true;
             for(auto itY = Y.begin();itY != Y.end(); ++itY){
-                if (((*itX).second)[3]>=((*itY).second)[3] && ((*itX).second)[5]<=((*itY).second)[5])valid=false;
+                if (((*itX).second)[3]>=((*itY).second)[3] && ((*itX).second)[4]<=((*itY).second)[4]){valid=false;break;}
             }
             if(valid==true) {Y.insert(pair<int,vector<int>>((*itX).first,(*itX).second));}
             //eliminate　D
             for(auto itY = Y.begin();itY != Y.end(); ++itY){
-                if (((*itX).second)[3]<=((*itY).second)[3] && ((*itX).second)[5]>((*itY).second)[5]){
+                if (((*itX).second)[3]<=((*itY).second)[3] && ((*itX).second)[4]>((*itY).second)[4]){
                     //To do <eliminate>
+
                 }
             }
         }
@@ -91,6 +93,6 @@ void Chaining::generate() {
 
 void Chaining::result(){
     for(auto itY = Y.begin();itY != Y.end(); ++itY){
-        cout<<(*itY).first<< " " <<((*itY).second)[4]<<endl;
+        cout<<((*itY).second)[0]<< " " <<((*itY).second)[1]<< " "<<((*itY).second)[4]<<endl;
     }
 }

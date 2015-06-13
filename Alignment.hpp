@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   Alignment.hpp
  * Author: tate
  *
@@ -13,11 +13,13 @@ public:
     Alignment(int sx, int sy, int ex, int ey, int score);
     Alignment(const Alignment& orig);
     virtual ~Alignment();
-    int SX();
-    int EX();
-    int SY();
-    int EY();
-    int Score();
+    int getSX();
+    int getEX();
+    int getSY();
+    int getEY();
+    int getScore();
+    void setSX(int sx);
+    void setEX(int ex);
 private:
     int sx;
     int sy;
