@@ -19,8 +19,7 @@ int main(int argc, char** argv) {
 
     Chaining chain = Chaining("chaining.txt");
     chain.generate();
-    chain.result();
-    cout<<"end"<<endl;
+    cout << chain.maxscore() << "is the best score." <<endl;
 
     return 0;
 }

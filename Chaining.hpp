@@ -20,6 +20,7 @@ public:
     virtual ~Chaining();
     void generate();
     void result();
+    int maxscore();
 private:
     std::multimap<int,int*> X;
     std::multimap<int,int*> Y;

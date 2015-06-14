@@ -6,14 +6,13 @@
  */
 
 #include "Chaining.hpp"
-#include "iostream"
+#include <iostream>
 #include <fstream>
-#include "cstdlib"
-#include "string.h"
+#include <cstdlib>
+#include <string.h>
 #include <map>
 #include <set>
 #include <vector>
-#include <climits>
 
 using namespace std;
 
@@ -30,9 +29,9 @@ Chaining::Chaining(char* filename) {
     int temp[5];
     while((ifs>>temp[0]>>temp[1]>>temp[2]>>temp[3]>>temp[4]>>f)!=0){
         //cout<<sx<<ex<<sy<<ey<<score<<name<<endl;
-				int* tmp = new int[5];
-				memcpy(tmp,temp,sizeof(int)*5);
-				vector<int> tep;
+        int* tmp = new int[5];
+        memcpy(tmp,temp,sizeof(int)*5);
+        vector<int> tep;
         tep.push_back(temp[0]);
         tep.push_back(temp[1]);
         tep.push_back(temp[2]);
@@ -54,40 +53,39 @@ Chaining::~Chaining() {
 
 void Chaining::generate() {
     for(auto itX = X.begin(); itX != X.end(); ++itX){
-            cout<<(*itX).first<<endl;
-    }
-    for(auto itX = X.begin(); itX != X.end(); ++itX){
-        if ((*itX).first==((*itX).second)[0]){  //if X is start point
+        if ((*itX).first == ((*itX).second)[0]){  //if X is start point
             pair<int,int*> newX;
-            int pointer = INT_MAX;
+            int pointer = 0;
             for(auto itY = Y.begin();itY != Y.end(); ++itY){
                 if (((*itX).second)[0] >= ((*itY).second)[1] && ((*itX).second)[2] >= ((*itY).second)[3]){ //X>Y
-                        //rewrite joukeinbun
                         cout << "found" << ((*itY).second)[1] << endl;
-                    if(((*itX).second[4]-(*itY).second[3]) < pointer){
-                        pointer = ((*itX).second[3]-(*itY).second[2]);
+                    if((*itY).second[4] > pointer){ //Biggest
+                        pointer = (*itY).second[4];
                         newX=std::make_pair((*itY).first,(*itY).second);
                     }
                 }
             }
-                if(pointer != INT_MAX){
-                    ((*itX).second[0]) = newX.second[0];
-                    ((*itX).second[2]) = newX.second[2];
-                    ((*itX).second[4]) += newX.second[4];
-                }
+            if(pointer != 0){
+                ((*itX).second[0])  = newX.second[0];
+                ((*itX).second[2])  = newX.second[2];
+                ((*itX).second[4]) += newX.second[4];
+            }
             cout << (*itX).first << " " << ((*itX).second)[0] << " " << ((*itX).second)[2] << " " <<((*itX).second)[4] << endl;
         }else{      //if X is end point
             cout << ((*itX).second)[1] << "end" << endl;
-            bool valid=true;
+            bool valid = true;
             for(auto itY = Y.begin();itY != Y.end(); ++itY){
-                if (((*itX).second)[3]>=((*itY).second)[3] && ((*itX).second)[4]<=((*itY).second)[4]){valid=false;break;}
+                if (((*itX).second)[3]>=((*itY).second)[3] && ((*itX).second)[4]<=((*itY).second)[4]){
+                    valid = false;
+                    break;
+                }
             }
-            if(valid==true) {Y.insert(make_pair((*itX).first,(*itX).second));}
+            if(valid==true) Y.insert(make_pair((*itX).first, (*itX).second));
             //eliminate　D
             for(auto itY = Y.begin();itY != Y.end(); ++itY){
-                if (((*itX).second)[3]<=((*itY).second)[3] && ((*itX).second)[4]>((*itY).second)[4]){
+                if (((*itX).second)[3] <= ((*itY).second)[3] && ((*itX).second)[4] > ((*itY).second)[4]){
                     //To do <eliminate>
-										Y.erase(itY);
+                    Y.erase(itY);
                 }
             }
         }
@@ -97,6 +95,14 @@ void Chaining::generate() {
 
 void Chaining::result(){
     for(auto itY = Y.begin();itY != Y.end(); ++itY){
-			if((*itY).first!=INT_MAX) cout<< " " << ((*itY).second)[0]<< " " <<((*itY).second)[1]<< " "<<((*itY).second)[4]<<endl;
+        cout<< (*itY).first << " " << ((*itY).second)[0] << " " << ((*itY).second)[1] << " " << ((*itY).second)[4] << endl;
     }
+}
+
+int Chaining::maxscore(){
+    int ret = 0;
+    for(auto itY = Y.begin();itY != Y.end(); ++itY){
+        if ((*itY).second[4] > ret) ret = (*itY).second[4];
+    }
+    return ret;
 }
