@@ -20,6 +20,7 @@ public:
     int getScore();
     void setSX(int sx);
     void setEX(int ex);
+    int& operator[](int i);
 private:
     int SX;
     int SY;

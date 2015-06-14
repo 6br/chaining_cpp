@@ -6,6 +6,7 @@
  */
 
 #include "Alignment.hpp"
+#include <iostream>
 
 Alignment::Alignment(int sx, int sy, int ex, int ey, int score) {
     SX = sx;
@@ -34,10 +35,10 @@ int &Alignment::operator[](int i){    // [] 演算子の多重定義
 	case 4:
 		return Score;
 	default :
-		cerr << "配列の範囲から外れています！";
-		return NULL;
+		std::cerr << "配列の範囲から外れています！"<< std::endl;
+		//return 0;
 	}
-} 
+}
 
 int Alignment::getEX(){
 	return EX;

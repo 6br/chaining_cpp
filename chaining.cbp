@@ -32,6 +32,8 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Alignment.cpp" />
+		<Unit filename="Alignment.hpp" />
 		<Unit filename="Chaining.cpp" />
 		<Unit filename="Chaining.hpp" />
 		<Unit filename="chaining.txt" />

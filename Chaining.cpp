@@ -30,7 +30,7 @@ Chaining::Chaining(char* filename) {
     int temp[5];
     while((ifs>>temp[0]>>temp[1]>>temp[2]>>temp[3]>>temp[4]>>f)!=0){
         //cout<<sx<<ex<<sy<<ey<<score<<name<<endl;
-				tmp = new int[5];
+				int* tmp = new int[5];
 				memcpy(tmp,temp,sizeof(int)*5);
 				vector<int> tep;
         tep.push_back(temp[0]);
@@ -78,12 +78,12 @@ void Chaining::generate() {
             for(auto itY = Y.begin();itY != Y.end(); ++itY){
                 if (((*itX).second)[3]>=((*itY).second)[3] && ((*itX).second)[4]<=((*itY).second)[4]){valid=false;break;}
             }
-            if(valid==true) {Y.insert(pair<int,vector<int>>((*itX).first,(*itX).second));}
+            if(valid==true) {Y.insert(make_pair((*itX).first,(*itX).second));}
             //eliminate　D
             for(auto itY = Y.begin();itY != Y.end(); ++itY){
                 if (((*itX).second)[3]<=((*itY).second)[3] && ((*itX).second)[4]>((*itY).second)[4]){
                     //To do <eliminate>
-										((*itX).first)=INT_MAX;
+										((*itY).second[4])=0;
                 }
             }
         }

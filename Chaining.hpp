@@ -21,8 +21,8 @@ public:
     void generate();
     void result();
 private:
-    std::multimap<int,std::vector<int>> X;
-    std::multimap<int,std::vector<int>> Y;
+    std::multimap<int,int*> X;
+    std::multimap<int,int*> Y;
 };
 
 #endif	/* CHAINING_HPP */
