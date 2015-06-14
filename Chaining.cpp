@@ -55,7 +55,7 @@ Chaining::~Chaining() {
 void Chaining::generate() {
     for(auto itX = X.begin(); itX != X.end(); ++itX){
         if ((*itX).first==((*itX).second)[0]){  //if X is start point
-            pair<int,vector<int>> newX;
+            pair<int,int*> newX;
             int pointer = INT_MAX;
             for(auto itY = Y.begin();itY != Y.end(); ++itY){
                 if (((*itX).second)[0] > ((*itY).second)[0] && ((*itX).second)[1] > ((*itY).second)[1]){
@@ -83,15 +83,16 @@ void Chaining::generate() {
             for(auto itY = Y.begin();itY != Y.end(); ++itY){
                 if (((*itX).second)[3]<=((*itY).second)[3] && ((*itX).second)[4]>((*itY).second)[4]){
                     //To do <eliminate>
-										((*itY).second[4])=0;
+										Y.erase(itY);
                 }
             }
         }
+    result();
     }
 }
 
 void Chaining::result(){
     for(auto itY = Y.begin();itY != Y.end(); ++itY){
-			if((*itY).first!=INT_MAX)cout<<((*itY).second)[0]<< " " <<((*itY).second)[1]<< " "<<((*itY).second)[4]<<endl;
+			if((*itY).first!=INT_MAX) cout<< " " << ((*itY).second)[0]<< " " <<((*itY).second)[1]<< " "<<((*itY).second)[4]<<endl;
     }
 }

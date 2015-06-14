@@ -17,8 +17,6 @@ using namespace std;
  */
 int main(int argc, char** argv) {
 
-
-
     Chaining chain = Chaining("chaining.txt");
     chain.generate();
     chain.result();
