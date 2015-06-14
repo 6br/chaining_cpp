@@ -54,14 +54,18 @@ Chaining::~Chaining() {
 
 void Chaining::generate() {
     for(auto itX = X.begin(); itX != X.end(); ++itX){
+            cout<<(*itX).first<<endl;
+    }
+    for(auto itX = X.begin(); itX != X.end(); ++itX){
         if ((*itX).first==((*itX).second)[0]){  //if X is start point
             pair<int,int*> newX;
             int pointer = INT_MAX;
             for(auto itY = Y.begin();itY != Y.end(); ++itY){
-                if (((*itX).second)[0] > ((*itY).second)[0] && ((*itX).second)[1] > ((*itY).second)[1]){
+                if (((*itX).second)[0] >= ((*itY).second)[1] && ((*itX).second)[2] >= ((*itY).second)[3]){ //X>Y
                         //rewrite joukeinbun
-                    if(((*itX).second[3]-(*itY).second[4]) < pointer){
-                        pointer = ((*itX).second[3]-(*itY).second[4]);
+                        cout << "found" << ((*itY).second)[1] << endl;
+                    if(((*itX).second[4]-(*itY).second[3]) < pointer){
+                        pointer = ((*itX).second[3]-(*itY).second[2]);
                         newX=std::make_pair((*itY).first,(*itY).second);
                     }
                 }
@@ -71,7 +75,7 @@ void Chaining::generate() {
                     ((*itX).second[2]) = newX.second[2];
                     ((*itX).second[4]) += newX.second[4];
                 }
-            cout << ((*itX).second)[0] << " " << ((*itX).second)[2] << " " <<((*itX).second)[4] << endl;
+            cout << (*itX).first << " " << ((*itX).second)[0] << " " << ((*itX).second)[2] << " " <<((*itX).second)[4] << endl;
         }else{      //if X is end point
             cout << ((*itX).second)[1] << "end" << endl;
             bool valid=true;
