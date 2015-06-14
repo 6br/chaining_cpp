@@ -13,7 +13,8 @@
 #ifndef CHAINING_HPP
 #define     CHAINING_HPP
 
-class Chaining {
+class Chaining
+{
 public:
     Chaining(char* filename);
     Chaining(const Chaining& orig);
