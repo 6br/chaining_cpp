@@ -30,16 +30,14 @@ Chaining::Chaining(char* filename)
     int temp[5];
     while((ifs>>temp[0]>>temp[1]>>temp[2]>>temp[3]>>temp[4]>>f)!=0)
     {
-        //cout<<sx<<ex<<sy<<ey<<score<<name<<endl;
         int* tmp = new int[5];
         memcpy(tmp,temp,sizeof(int)*5);
-        vector<int> tep;
+        /*vector<int> tep;
         tep.push_back(temp[0]);
         tep.push_back(temp[1]);
         tep.push_back(temp[2]);
         tep.push_back(temp[3]);
-        tep.push_back(temp[4]);
-        //int temp2[5];
+        tep.push_back(temp[4]);*/
         //memcpy(temp2,temp,sizeof (int)*5);
         ///cout << (vect[0])[1] << endl;
         X.insert(std::make_pair(temp[0],tmp));
